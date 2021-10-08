@@ -8,6 +8,9 @@ using ButtplugUnity;
 public class ButtplugClient : MonoBehaviour
 {
     ButtplugUnityClient client = null;
+    float transmissionTimer = 0;
+    float transmissionTimerPeriod = .2f;
+    float value = 0f;
 
     async void Start()
     {
@@ -18,7 +21,23 @@ public class ButtplugClient : MonoBehaviour
         await client.StartScanningAsync();
     }
 
-    public void SendValue(float value)
+    private void Update()
+    {
+        transmissionTimer += Time.deltaTime;
+        if (transmissionTimer > transmissionTimerPeriod)
+        {
+            transmissionTimer = 0;
+            SendValue();
+        }
+    }
+
+    public void SetValue(float _value)
+    {
+        value = _value;
+        value = Mathf.Clamp(value, 0f, 1f);
+    }
+
+    void SendValue()
     {
         if (client == null || client.Connected == false)
             return;
@@ -28,7 +47,6 @@ public class ButtplugClient : MonoBehaviour
             if (device.AllowedMessages.ContainsKey(ServerMessage.Types.MessageAttributeType.VibrateCmd))
             {
                 device.SendVibrateCmd(value);
-                Debug.Log($"{device.Name} : {value}");
             }
         }
     }

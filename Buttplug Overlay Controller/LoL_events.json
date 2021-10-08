@@ -1,0 +1,336 @@
+{
+  "Events": [
+    {
+      "EventID": 0,
+      "EventName": "GameStart",
+      "EventTime": 0.01652820035815239
+    },
+    {
+      "EventID": 1,
+      "EventName": "MinionsSpawning",
+      "EventTime": 65.03661346435547
+    },
+    {
+      "Assisters": [],
+      "EventID": 2,
+      "EventName": "ChampionKill",
+      "EventTime": 209.2744598388672,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "EventID": 3,
+      "EventName": "FirstBlood",
+      "EventTime": 209.2744598388672,
+      "Recipient": "George Maneta"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 4,
+      "EventName": "Ace",
+      "EventTime": 209.2744598388672
+    },
+    {
+      "Assisters": [],
+      "EventID": 5,
+      "EventName": "ChampionKill",
+      "EventTime": 308.21051025390627,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 6,
+      "EventName": "Ace",
+      "EventTime": 308.21051025390627
+    },
+    {
+      "Assisters": [],
+      "EventID": 7,
+      "EventName": "ChampionKill",
+      "EventTime": 363.40045166015627,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 8,
+      "EventName": "Ace",
+      "EventTime": 363.40045166015627
+    },
+    {
+      "Assisters": [],
+      "EventID": 9,
+      "EventName": "ChampionKill",
+      "EventTime": 425.9115905761719,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 10,
+      "EventName": "Ace",
+      "EventTime": 425.9115905761719
+    },
+    {
+      "Assisters": [],
+      "EventID": 11,
+      "EventName": "ChampionKill",
+      "EventTime": 535.9228515625,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 12,
+      "EventName": "Ace",
+      "EventTime": 535.9228515625
+    },
+    {
+      "Assisters": [],
+      "EventID": 13,
+      "EventName": "ChampionKill",
+      "EventTime": 604.5763549804688,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 14,
+      "EventName": "Ace",
+      "EventTime": 604.5763549804688
+    },
+    {
+      "Assisters": [],
+      "EventID": 15,
+      "EventName": "ChampionKill",
+      "EventTime": 658.0264282226563,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 16,
+      "EventName": "Ace",
+      "EventTime": 658.0264282226563
+    },
+    {
+      "Assisters": [],
+      "EventID": 17,
+      "EventName": "TurretKilled",
+      "EventTime": 687.4838256835938,
+      "KillerName": "George Maneta",
+      "TurretKilled": "Turret_T2_R_03_A"
+    },
+    {
+      "EventID": 18,
+      "EventName": "FirstBrick",
+      "EventTime": 687.4838256835938,
+      "KillerName": "George Maneta"
+    },
+    {
+      "Assisters": [],
+      "EventID": 19,
+      "EventName": "ChampionKill",
+      "EventTime": 710.5703735351563,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 20,
+      "EventName": "Ace",
+      "EventTime": 710.5703735351563
+    },
+    {
+      "Assisters": [],
+      "EventID": 21,
+      "EventName": "ChampionKill",
+      "EventTime": 795.6192016601563,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 22,
+      "EventName": "Ace",
+      "EventTime": 795.6192016601563
+    },
+    {
+      "Assisters": [],
+      "EventID": 23,
+      "EventName": "TurretKilled",
+      "EventTime": 836.796142578125,
+      "KillerName": "Minion_T100L0S24N0151",
+      "TurretKilled": "Turret_T2_R_02_A"
+    },
+    {
+      "Assisters": [],
+      "EventID": 24,
+      "EventName": "ChampionKill",
+      "EventTime": 842.74853515625,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 25,
+      "EventName": "Ace",
+      "EventTime": 842.74853515625
+    },
+    {
+      "Assisters": [],
+      "EventID": 26,
+      "EventName": "ChampionKill",
+      "EventTime": 887.4047241210938,
+      "KillerName": "Soraka Bot",
+      "VictimName": "George Maneta"
+    },
+    {
+      "Acer": "Soraka Bot",
+      "AcingTeam": "CHAOS",
+      "EventID": 27,
+      "EventName": "Ace",
+      "EventTime": 887.4047241210938
+    },
+    {
+      "Assisters": [],
+      "EventID": 28,
+      "EventName": "ChampionKill",
+      "EventTime": 975.78125,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 29,
+      "EventName": "Ace",
+      "EventTime": 975.78125
+    },
+    {
+      "Assisters": [],
+      "EventID": 30,
+      "EventName": "TurretKilled",
+      "EventTime": 1027.747802734375,
+      "KillerName": "Minion_T100L0S31N0192",
+      "TurretKilled": "Turret_T2_R_01_A"
+    },
+    {
+      "Assisters": [],
+      "EventID": 31,
+      "EventName": "ChampionKill",
+      "EventTime": 1028.1881103515626,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 32,
+      "EventName": "Ace",
+      "EventTime": 1028.1881103515626
+    },
+    {
+      "Assisters": [],
+      "EventID": 33,
+      "EventName": "InhibKilled",
+      "EventTime": 1055.7474365234376,
+      "InhibKilled": "Barracks_T2_R1",
+      "KillerName": "Minion_T100L0S31N0195"
+    },
+    {
+      "Assisters": [],
+      "EventID": 34,
+      "EventName": "ChampionKill",
+      "EventTime": 1072.8348388671876,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 35,
+      "EventName": "Ace",
+      "EventTime": 1072.8348388671876
+    },
+    {
+      "Assisters": [],
+      "EventID": 36,
+      "EventName": "TurretKilled",
+      "EventTime": 1099.5247802734376,
+      "KillerName": "George Maneta",
+      "TurretKilled": "Turret_T2_C_01_A"
+    },
+    {
+      "Assisters": [],
+      "EventID": 37,
+      "EventName": "ChampionKill",
+      "EventTime": 1120.3819580078126,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 38,
+      "EventName": "Ace",
+      "EventTime": 1120.3819580078126
+    },
+    {
+      "Assisters": [],
+      "EventID": 39,
+      "EventName": "TurretKilled",
+      "EventTime": 1144.65966796875,
+      "KillerName": "Minion_T100L1S36N0224",
+      "TurretKilled": "Turret_T2_C_05_A"
+    },
+    {
+      "Assisters": [],
+      "EventID": 40,
+      "EventName": "ChampionKill",
+      "EventTime": 1168.9010009765626,
+      "KillerName": "George Maneta",
+      "VictimName": "Soraka Bot"
+    },
+    {
+      "Acer": "George Maneta",
+      "AcingTeam": "ORDER",
+      "EventID": 41,
+      "EventName": "Ace",
+      "EventTime": 1168.9010009765626
+    },
+    {
+      "Assisters": [],
+      "EventID": 42,
+      "EventName": "TurretKilled",
+      "EventTime": 1181.97998046875,
+      "KillerName": "Minion_T100L0S36N0223",
+      "TurretKilled": "Turret_T2_C_02_A"
+    },
+    {
+      "Assisters": [],
+      "EventID": 43,
+      "EventName": "TurretKilled",
+      "EventTime": 1216.76171875,
+      "KillerName": "Minion_T100L2S38N0238",
+      "TurretKilled": "Turret_T2_L_03_A"
+    },
+    {
+      "EventID": 44,
+      "EventName": "GameEnd",
+      "EventTime": 1236.7769775390626,
+      "Result": "Win"
+    }
+  ]
+}
