@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    float score = 0;
+    float score = 10;
     [SerializeField] Text scoreText;
 
     [Space]
@@ -18,15 +18,13 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] InputField destroyTurret;
     [SerializeField] InputField destroyInhibitor;
     [SerializeField] InputField win;
-    [SerializeField] InputField lose;
-
-    
+    [SerializeField] InputField lose;    
 
     void Update()
     {
         score -= Time.deltaTime * float.Parse(decayPerMinute.text) / 60; //decay by time
         score = Mathf.Clamp(score, 0, score);
-        scoreText.text = score.ToString();
+        scoreText.text = ((int)score).ToString();
     }
 
     public float GetScore()
