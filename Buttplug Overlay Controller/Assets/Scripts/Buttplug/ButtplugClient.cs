@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Buttplug;
 using ButtplugUnity;
+using UnityEngine.UI;
 
 public class ButtplugClient : MonoBehaviour
 {
+    [SerializeField] InputField deviceStrength;
+    
     ButtplugUnityClient client = null;
     float transmissionTimer = 0;
     float transmissionTimerPeriod = .2f;
@@ -42,11 +45,13 @@ public class ButtplugClient : MonoBehaviour
         if (client == null || client.Connected == false)
             return;
 
+        var valueToBeSent = value * float.Parse(deviceStrength.text) / 100;
+
         foreach (var device in client.Devices)
         {
             if (device.AllowedMessages.ContainsKey(ServerMessage.Types.MessageAttributeType.VibrateCmd))
             {
-                device.SendVibrateCmd(value);
+                device.SendVibrateCmd(valueToBeSent);
             }
         }
     }
