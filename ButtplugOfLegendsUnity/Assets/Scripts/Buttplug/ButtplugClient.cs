@@ -2,29 +2,39 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 using Buttplug;
 using ButtplugUnity;
 using UnityEngine.UI;
 
 public class ButtplugClient : MonoBehaviour
 {
-    [SerializeField] InputField deviceStrength;
-    
+    [SerializeField] string clientDisplayName;    
     ButtplugUnityClient client = null;
     float transmissionTimer = 0;
-    float transmissionTimerPeriod = .2f;
+    [SerializeField] float transmissionTimerPeriod = .2f;
     float value = 0f;
 
-    async void Start()
+    [SerializeField] InputField maxDeviceStrength;
+
+    private void Start()
     {
-        client = new ButtplugUnityClient("Overlay");
-        ButtplugAntiCrash.clientList.Add(client);
-        var connector = new ButtplugWebsocketConnectorOptions(new Uri("ws://localhost:12345/buttplug"));
-        await client.ConnectAsync(connector);
-        await client.StartScanningAsync();
+        client = new ButtplugUnityClient(clientDisplayName);
+        ButtplugAntiCrash.clientList.Add(client);        
     }
 
-    private void Update()
+    public async void TryConnect()
+    {
+        if(client.Connected == false)
+        {
+            var connector = new ButtplugWebsocketConnectorOptions(new Uri("ws://localhost:12345/buttplug"));
+            await client.ConnectAsync(connector);
+            if(client.Connected)
+                await client.StartScanningAsync();
+        }
+    }
+
+    void Update()
     {
         transmissionTimer += Time.deltaTime;
         if (transmissionTimer > transmissionTimerPeriod)
@@ -45,7 +55,7 @@ public class ButtplugClient : MonoBehaviour
         if (client == null || client.Connected == false)
             return;
 
-        var valueToBeSent = value * float.Parse(deviceStrength.text) / 100;
+        var valueToBeSent = value * float.Parse(maxDeviceStrength.text) / 100;
 
         foreach (var device in client.Devices)
         {
