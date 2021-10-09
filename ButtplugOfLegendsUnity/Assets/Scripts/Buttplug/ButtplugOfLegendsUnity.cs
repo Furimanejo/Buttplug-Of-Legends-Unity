@@ -14,7 +14,7 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
     string playerName = string.Empty;
     int countOfEventsInLastEvaluation = 0;
 
-    [SerializeField] ButtplugClient buttplugClient;
+    [SerializeField] List<ButtplugController> controllers;
     [SerializeField] ScoreManager scoreManager;
 
     void Start()
@@ -24,7 +24,8 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
     
     void Update()
     {
-        buttplugClient.SetValue(scoreManager.GetScore()/100f);
+        foreach(var controller in controllers)
+            controller.SetValue(scoreManager.GetScore()/100f);
     }
 
     IEnumerator GetClientDataRoutine()
