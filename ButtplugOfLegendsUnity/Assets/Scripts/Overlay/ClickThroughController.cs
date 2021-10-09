@@ -9,20 +9,33 @@ public class ClickThroughController : MonoBehaviour
     [SerializeField] OverlayController overlayController = null;
     [SerializeField] EventSystem eventSystem = null;
     [SerializeField] GraphicRaycaster graphicRaycaster = null;
+    bool status = true;
 
-    void Update()
+    private void Start()
+    {
+        StartCoroutine(CheckRaycast());
+    }
+
+    IEnumerator CheckRaycast()
     {
         //Set up the new Pointer Event
         var m_PointerEventData = new PointerEventData(eventSystem);
-        //Set the Pointer Event Position to that of the mouse position
-        m_PointerEventData.position = Input.mousePosition;
-        //Create a list of Raycast Results
-        List<RaycastResult> results = new List<RaycastResult>();
+        while (true)
+        {
+            //Set the Pointer Event Position to that of the mouse position
+            m_PointerEventData.position = Input.mousePosition;
+            //Create a list of Raycast Results
+            List<RaycastResult> results = new List<RaycastResult>();
+            //Raycast using the Graphics Raycaster and mouse click position
+            graphicRaycaster.Raycast(m_PointerEventData, results);
 
-        //Raycast using the Graphics Raycaster and mouse click position
-        graphicRaycaster.Raycast(m_PointerEventData, results);
-
-        bool hit = results.Count > 0;
-        overlayController.SetClickThrough(!hit);
+            bool hit = results.Count > 0;
+            if(hit != status)
+            {
+                status = hit;
+                overlayController.SetClickThrough(!hit);
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }
