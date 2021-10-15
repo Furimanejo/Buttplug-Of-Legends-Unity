@@ -35,6 +35,7 @@ public class OverlayController : MonoBehaviour
 
     void Start()
     {
+        Application.quitting += () => SetClickThrough(false);
 #if !UNITY_EDITOR
         hWnd = GetActiveWindow();
         MARGINS margins = new MARGINS() { cxLeftWidth = -1 };
