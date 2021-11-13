@@ -3186,7 +3186,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Status: Disconnected'
+  m_Text: 'Status: <color=red>Disconnected</color>'
 --- !u!222 &1546026655
 CanvasRenderer:
   m_ObjectHideFlags: 0
