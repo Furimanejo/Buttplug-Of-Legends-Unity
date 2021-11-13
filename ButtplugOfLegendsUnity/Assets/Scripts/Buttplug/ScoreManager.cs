@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    float score = 10;
+    float score = 0;
     [SerializeField] Text scoreText;
 
     [Space]
@@ -30,6 +30,11 @@ public class ScoreManager : MonoBehaviour
     public float GetScore()
     {
         return score;
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
     }
 
     public void ApplyEvent(LeagueEventData eventData, string playerName)
