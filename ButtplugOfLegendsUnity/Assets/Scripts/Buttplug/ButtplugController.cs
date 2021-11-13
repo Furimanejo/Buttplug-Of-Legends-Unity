@@ -5,11 +5,9 @@ using UnityEngine;
 public abstract class ButtplugController : MonoBehaviour
 {
     [SerializeField] protected ButtplugClient client;
-    [SerializeField] float transmissionTimerPeriod = .2f;
-    float transmissionTimer = 0;
     protected float value;
 
-    protected abstract void SendValueToClient();
+    protected abstract void UpdateValueToClient();
 
     public virtual void SetValue(float _value)
     {
@@ -19,11 +17,6 @@ public abstract class ButtplugController : MonoBehaviour
 
     private void Update()
     {
-        transmissionTimer += Time.deltaTime;
-        if (transmissionTimer > transmissionTimerPeriod)
-        {
-            transmissionTimer = 0;
-            SendValueToClient();
-        }
+        UpdateValueToClient();
     }
 }
