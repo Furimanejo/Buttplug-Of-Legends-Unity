@@ -15,6 +15,7 @@ public class ButtplugClient : MonoBehaviour
     Queue<Message> messageQueue = new Queue<Message>();
     [SerializeField] float minDelayBetweenMessages = .2f;
     float waitForNextMessageDequeue = 0f;
+    
     class Message
     {
         float value;
@@ -46,7 +47,8 @@ public class ButtplugClient : MonoBehaviour
     private void Start()
     {
         client = new ButtplugUnityClient(clientDisplayName);
-        client.ServerDisconnect += Client_ServerDisconnect;
+        UpdateUIDisconnected(null, null);
+        client.ServerDisconnect += UpdateUIDisconnected;
         ButtplugAntiCrash.clientList.Add(client);
     }
 
@@ -68,9 +70,9 @@ public class ButtplugClient : MonoBehaviour
         }            
     }
 
-    private void Client_ServerDisconnect(object sender, EventArgs e)
+    private void UpdateUIDisconnected(object sender, EventArgs e)
     {
-        connectionStatusLabel.text = "Status: Disconnected";
+        connectionStatusLabel.text = "Status: <color=red>Disconnected</color>";
     }
     
     public async void TryConnect()
@@ -81,7 +83,7 @@ public class ButtplugClient : MonoBehaviour
             await client.ConnectAsync(connector);
             if (client.Connected)
             {
-                connectionStatusLabel.text = "Status: Connected";
+                connectionStatusLabel.text = "Status: <color=green>Connected</color>";
                 await client.StartScanningAsync();
             }
         }
