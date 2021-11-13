@@ -10,7 +10,7 @@ public class ButtplugVibrationController : ButtplugController
     [SerializeField] InputField frequencyBPM;
     const float BPM_TO_RADS = 0.10471975499997f;
 
-    protected override void SendValueToClient()
+    protected override void UpdateValueToClient()
     {
         var sendValue = value * float.Parse(maxDeviceStrength.text) / 100;
         switch (pattern)
@@ -21,8 +21,8 @@ public class ButtplugVibrationController : ButtplugController
             default:
                 break;
         }
-        Debug.Log(sendValue);
-        client.SendValue(sendValue, Buttplug.ServerMessage.Types.MessageAttributeType.VibrateCmd);
+        client.QueueMenssage(sendValue, 0,
+            Buttplug.ServerMessage.Types.MessageAttributeType.VibrateCmd);
     }
 
     public void OnChangePattern(int newPattern)

@@ -13,13 +13,14 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
     string eventURL = "https://127.0.0.1:2999/liveclientdata/eventdata";
     string playerName = string.Empty;
     int countOfEventsInLastEvaluation = 0;
+    string eventResponseText = default;
 
     [SerializeField] List<ButtplugController> controllers;
     [SerializeField] ScoreManager scoreManager;
 
     void Start()
     {
-        StartCoroutine(GetClientDataRoutine());
+        StartCoroutine(UpdateClientData());
     }
     
     void Update()
@@ -28,30 +29,34 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
             controller.SetValue(scoreManager.GetScore()/100f);
     }
 
-    IEnumerator GetClientDataRoutine()
+    IEnumerator UpdateClientData()
     {
         while (true)
         {
-            if (PlayerNameIsValid() == false)
-            {
-                var request = CreateGetRequest(nameURL);
-                yield return request.SendWebRequest();
-                if (request.responseCode == 200)
-                    playerName = request.downloadHandler.text.Replace("\"", "");
-            }
-            else
-            {
-                var request = CreateGetRequest(eventURL);
-                yield return request.SendWebRequest();
-                if (request.responseCode == 200)
-                {
-                    var response = request.downloadHandler.text;
-                    var events = JSON.Deserialize<Dictionary<string, List<LeagueEventData>>>(response)["Events"];
-                    if(countOfEventsInLastEvaluation != events.Count)
-                        EvaluateEvents(events);
-                    countOfEventsInLastEvaluation = events.Count;
-                }
-            }
+            yield return GetPlayerName();
+            yield return GetEvents();            
+        }
+    }
+
+    IEnumerator GetPlayerName()
+    {
+        var request = CreateGetRequest(nameURL);
+        yield return request.SendWebRequest();
+        if (request.responseCode == 200)
+            playerName = request.downloadHandler.text.Replace("\"", "");
+    }
+
+    IEnumerator GetEvents()
+    {
+        var request = CreateGetRequest(eventURL);
+        yield return request.SendWebRequest();
+        if (request.responseCode == 200)
+        {
+            eventResponseText = request.downloadHandler.text;
+            var events = JSON.Deserialize<Dictionary<string, List<LeagueEventData>>>(eventResponseText)["Events"];
+            if (countOfEventsInLastEvaluation != events.Count)
+                EvaluateEvents(events);
+            countOfEventsInLastEvaluation = events.Count;
         }
     }
 
