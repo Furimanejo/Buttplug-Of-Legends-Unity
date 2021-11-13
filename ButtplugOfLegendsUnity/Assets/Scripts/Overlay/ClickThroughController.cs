@@ -16,6 +16,11 @@ public class ClickThroughController : MonoBehaviour
         StartCoroutine(CheckRaycast());
     }
 
+    private void OnDisable()
+    {
+        overlayController.SetClickThrough(false);
+    }
+
     IEnumerator CheckRaycast()
     {
         //Set up the new Pointer Event
