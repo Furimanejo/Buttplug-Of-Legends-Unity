@@ -12,8 +12,8 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
     string nameURL = "https://127.0.0.1:2999/liveclientdata/activeplayername";
     string eventURL = "https://127.0.0.1:2999/liveclientdata/eventdata";
     string playerName = string.Empty;
-    int countOfEventsInLastEvaluation = 0;
     string eventResponseText = default;
+    int countOfEventsInLastEvaluation = 0;
 
     [SerializeField] List<ButtplugController> controllers;
     [SerializeField] ScoreManager scoreManager;
@@ -27,6 +27,12 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
     {
         foreach(var controller in controllers)
             controller.SetValue(scoreManager.GetScore()/100f);
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log($"playerName: {playerName}");
+        Debug.Log($"events: {eventResponseText}");
     }
 
     IEnumerator UpdateClientData()
