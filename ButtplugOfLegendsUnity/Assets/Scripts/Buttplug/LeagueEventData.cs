@@ -7,7 +7,7 @@ using UnityJSON;
 public class LeagueEventData
 {
     public int EventID = -1;
-    public float EventTime = -1f;
+    public double EventTime = -1f;
     public string EventName = default;
     public string VictimName = default;
     public string KillerName = default;

@@ -29,7 +29,7 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
             controller.SetValue(scoreManager.GetScore()/100f);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         Debug.Log($"playerName: {playerName}");
         Debug.Log($"events: {eventResponseText}");
@@ -40,7 +40,8 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
         while (true)
         {
             yield return GetPlayerName();
-            yield return GetEvents();            
+            if(PlayerNameIsValid())
+                yield return GetEvents();            
         }
     }
 
@@ -70,7 +71,7 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
     {
         if (events.Count == 0)
             return;
-        float timeOfLastEvent = events[events.Count - 1].EventTime;
+        var timeOfLastEvent = events[events.Count - 1].EventTime;
         foreach (var eventData in events)
         {
             if(eventData.EventTime == timeOfLastEvent)
