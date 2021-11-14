@@ -60,7 +60,6 @@ public class ButtplugClient : MonoBehaviour
             {
                 var message = messageQueue.Dequeue();
                 message.Send(client);
-                //Debug.Log(message.delay);
                 waitForNextMessageDequeue = message.delay;
             }
         }

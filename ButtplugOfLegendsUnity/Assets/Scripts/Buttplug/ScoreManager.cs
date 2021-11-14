@@ -18,13 +18,14 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] InputField destroyTurret;
     [SerializeField] InputField destroyInhibitor;
     [SerializeField] InputField win;
-    [SerializeField] InputField lose;    
+    [SerializeField] InputField lose;
 
     void Update()
     {
-        score -= Time.deltaTime * float.Parse(decayPerMinute.text) / 60; //decay by time
-        score = Mathf.Clamp(score, 0, score);
-        scoreText.text = ((int)score).ToString();
+        if (decayPerMinute.text != "-")
+            score -= Time.deltaTime * int.Parse(decayPerMinute.text) / 60f; //decay by time
+        score = Mathf.Clamp(score, 0f, score);
+        scoreText.text = score.ToString("F0");
     }
 
     public float GetScore()
