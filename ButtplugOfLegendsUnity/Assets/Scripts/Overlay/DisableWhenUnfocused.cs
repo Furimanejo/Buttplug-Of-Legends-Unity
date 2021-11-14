@@ -8,7 +8,12 @@ public class DisableWhenUnfocused : MonoBehaviour
 
     private void OnApplicationFocus(bool focus)
     {
-        foreach(var obj in objectsToControl)
+        ApplyFocus(focus);
+    }
+
+    void ApplyFocus(bool focus)
+    {
+        foreach (var obj in objectsToControl)
         {
             obj.SetActive(focus);
         }

@@ -36,11 +36,14 @@ public class OverlayController : MonoBehaviour
     void Start()
     {
         Application.quitting += () => SetClickThrough(false);
+        if (Application.isFocused == false)
+            SetClickThrough(true);
 #if !UNITY_EDITOR
         hWnd = GetActiveWindow();
         MARGINS margins = new MARGINS() { cxLeftWidth = -1 };
         DwmExtendFrameIntoClientArea(hWnd, ref margins); // makes fullscreen and transparent
         SetWindowPos(hWnd, HWIN_TOPMOST, 0, 0, 0, 0, 0); // makes topmost
+        
 #endif
     }
 
