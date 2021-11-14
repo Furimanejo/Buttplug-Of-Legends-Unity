@@ -21,6 +21,7 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
     void Start()
     {
         StartCoroutine(UpdateClientData());
+        Application.wantsToQuit += () => { LogClientData(); return true; } ;
     }
     
     void Update()
@@ -29,7 +30,7 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
             controller.SetValue(scoreManager.GetScore()/100f);
     }
 
-    private void OnDisable()
+    private void LogClientData()
     {
         Debug.Log($"playerName: {playerName}");
         Debug.Log($"events: {eventResponseText}");
