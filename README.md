@@ -9,3 +9,5 @@ Steps:
 1. Open Intiface
 2. Open this app and click connect
 3. Play League of Legends
+
+Drop by my [discord server](https://discord.gg/wz2qvkuEyJ) if you need any help.
