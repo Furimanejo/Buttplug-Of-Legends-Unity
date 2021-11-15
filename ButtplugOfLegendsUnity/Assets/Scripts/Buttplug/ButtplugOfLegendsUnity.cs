@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-
-//https://github.com/adragonite/UnityJSON#deserialization
-using UnityJSON;
-
+using FullSerializer;
 
 public class ButtplugOfLegendsUnity : MonoBehaviour
 {
+    fsSerializer serializer = new fsSerializer();
     string nameURL = "https://127.0.0.1:2999/liveclientdata/activeplayername";
     string eventURL = "https://127.0.0.1:2999/liveclientdata/eventdata";
     string playerName = string.Empty;
@@ -61,10 +59,15 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
         if (request.responseCode == 200)
         {
             eventResponseText = request.downloadHandler.text;
-            var events = JSON.Deserialize<Dictionary<string, List<LeagueEventData>>>(eventResponseText)["Events"];
-            if (countOfEventsInLastEvaluation != events.Count)
-                EvaluateEvents(events);
-            countOfEventsInLastEvaluation = events.Count;
+            var events = new Dictionary<string, List<LeagueEventData>>();
+            var data = fsJsonParser.Parse(eventResponseText);
+            serializer.TryDeserialize(data, ref events);
+
+            var eventDataList = events["Events"];
+
+            if (countOfEventsInLastEvaluation != eventDataList.Count)
+                EvaluateEvents(eventDataList);
+            countOfEventsInLastEvaluation = eventDataList.Count;            
         }
     }
 
