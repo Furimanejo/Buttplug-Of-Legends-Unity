@@ -1446,6 +1446,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34c36e245d1dfea41b7f41d320c89659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testResponse: "[ \t{ \t\t\"championName\": \"Veigar\", \t\t\"isBot\": false, \t\t\"isDead\":
+    false, \t\t\"items\": [], \t\t\"level\": 1, \t\t\"position\": \"\", \t\t\"rawChampionName\":
+    \"game_character_displayname_Veigar\", \t\t\"respawnTimer\": 0.0, \t\t\"runes\":
+    { \t\t\t\"keystone\": { \t\t\t\t\"displayName\": \"Cometa Arcano\", \t\t\t\t\"id\":
+    8229, \t\t\t\t\"rawDescription\": \"perk_tooltip_ArcaneComet\", \t\t\t\t\"rawDisplayName\":
+    \"perk_displayname_ArcaneComet\" \t\t\t}, \t\t\t\"primaryRuneTree\": { \t\t\t\t\"displayName\":
+    \"Feiti\xE7aria\", \t\t\t\t\"id\": 8200, \t\t\t\t\"rawDescription\": \"perkstyle_tooltip_7202\",
+    \t\t\t\t\"rawDisplayName\": \"perkstyle_displayname_7202\" \t\t\t}, \t\t\t\"secondaryRuneTree\":
+    { \t\t\t\t\"displayName\": \"Precis\xE3o\", \t\t\t\t\"id\": 8000, \t\t\t\t\"rawDescription\":
+    \"perkstyle_tooltip_7201\", \t\t\t\t\"rawDisplayName\": \"perkstyle_displayname_7201\"
+    \t\t\t} \t\t}, \t\t\"scores\": { \t\t\t\"assists\": 0, \t\t\t\"creepScore\":
+    0, \t\t\t\"deaths\": 0, \t\t\t\"kills\": 0, \t\t\t\"wardScore\": 0.0 \t\t}, \t\t\"skinID\":
+    0, \t\t\"summonerName\": \"George Maneta\", \t\t\"summonerSpells\": { \t\t\t\"summonerSpellOne\":
+    { \t\t\t\t\"displayName\": \"Flash\", \t\t\t\t\"rawDescription\": \"GeneratedTip_SummonerSpell_SummonerFlash_Description\",
+    \t\t\t\t\"rawDisplayName\": \"GeneratedTip_SummonerSpell_SummonerFlash_DisplayName\"
+    \t\t\t}, \t\t\t\"summonerSpellTwo\": { \t\t\t\t\"displayName\": \"Incendiar\",
+    \t\t\t\t\"rawDescription\": \"GeneratedTip_SummonerSpell_SummonerDot_Description\",
+    \t\t\t\t\"rawDisplayName\": \"GeneratedTip_SummonerSpell_SummonerDot_DisplayName\"
+    \t\t\t} \t\t}, \t\t\"team\": \"ORDER\" \t}, \t{ \t\t\"championName\": \"Leona\",
+    \t\t\"isBot\": true, \t\t\"isDead\": false, \t\t\"items\": [ \t\t\t{ \t\t\t\t\"canUse\":
+    false, \t\t\t\t\"consumable\": false, \t\t\t\t\"count\": 1, \t\t\t\t\"displayName\":
+    \"Escudo Relic\xE1rio\", \t\t\t\t\"itemID\": 3858, \t\t\t\t\"price\": 400, \t\t\t\t\"rawDescription\":
+    \"GeneratedTip_Item_3858_Description\", \t\t\t\t\"rawDisplayName\": \"Item_3858_Name\",
+    \t\t\t\t\"slot\": 0 \t\t\t}, \t\t\t{ \t\t\t\t\"canUse\": true, \t\t\t\t\"consumable\":
+    true, \t\t\t\t\"count\": 2, \t\t\t\t\"displayName\": \"Po\xE7\xE3o de Vida\",
+    \t\t\t\t\"itemID\": 2003, \t\t\t\t\"price\": 50, \t\t\t\t\"rawDescription\":
+    \"GeneratedTip_Item_2003_Description\", \t\t\t\t\"rawDisplayName\": \"Item_2003_Name\",
+    \t\t\t\t\"slot\": 1 \t\t\t}, \t\t\t{ \t\t\t\t\"canUse\": true, \t\t\t\t\"consumable\":
+    false, \t\t\t\t\"count\": 1, \t\t\t\t\"displayName\": \"Sentinela Invis\xEDvel\",
+    \t\t\t\t\"itemID\": 3340, \t\t\t\t\"price\": 0, \t\t\t\t\"rawDescription\": \"GeneratedTip_Item_3340_Description\",
+    \t\t\t\t\"rawDisplayName\": \"Item_3340_Name\", \t\t\t\t\"slot\": 6 \t\t\t} \t\t],
+    \t\t\"level\": 9, \t\t\"position\": \"\", \t\t\"rawChampionName\": \"game_character_displayname_Leona\",
+    \t\t\"respawnTimer\": 0.0, \t\t\"runes\": { \t\t\t\"keystone\": { \t\t\t\t\"displayName\":
+    \"Aperto dos Mortos-Vivos\", \t\t\t\t\"id\": 8437, \t\t\t\t\"rawDescription\":
+    \"perk_tooltip_GraspOfTheUndying\", \t\t\t\t\"rawDisplayName\": \"perk_displayname_GraspOfTheUndying\"
+    \t\t\t}, \t\t\t\"primaryRuneTree\": { \t\t\t\t\"displayName\": \"Determina\xE7\xE3o\",
+    \t\t\t\t\"id\": 8400, \t\t\t\t\"rawDescription\": \"perkstyle_tooltip_7204\",
+    \t\t\t\t\"rawDisplayName\": \"perkstyle_displayname_7204\" \t\t\t}, \t\t\t\"secondaryRuneTree\":
+    { \t\t\t\t\"displayName\": \"Feiti\xE7aria\", \t\t\t\t\"id\": 8200, \t\t\t\t\"rawDescription\":
+    \"perkstyle_tooltip_7202\", \t\t\t\t\"rawDisplayName\": \"perkstyle_displayname_7202\"
+    \t\t\t} \t\t}, \t\t\"scores\": { \t\t\t\"assists\": 0, \t\t\t\"creepScore\":
+    40, \t\t\t\"deaths\": 0, \t\t\t\"kills\": 0, \t\t\t\"wardScore\": 0.0 \t\t},
+    \t\t\"skinID\": 0, \t\t\"summonerName\": \"Leona Bot\", \t\t\"summonerSpells\":
+    { \t\t\t\"summonerSpellOne\": { \t\t\t\t\"displayName\": \"Curar\", \t\t\t\t\"rawDescription\":
+    \"GeneratedTip_SummonerSpell_SummonerHeal_Description\", \t\t\t\t\"rawDisplayName\":
+    \"GeneratedTip_SummonerSpell_SummonerHeal_DisplayName\" \t\t\t}, \t\t\t\"summonerSpellTwo\":
+    { \t\t\t\t\"displayName\": \"Teleporte\", \t\t\t\t\"rawDescription\": \"GeneratedTip_SummonerSpell_SummonerTeleport_Description\",
+    \t\t\t\t\"rawDisplayName\": \"GeneratedTip_SummonerSpell_SummonerTeleport_DisplayName\"
+    \t\t\t} \t\t}, \t\t\"team\": \"CHAOS\" \t} ]"
   controllers:
   - {fileID: 630249113}
   scoreManager: {fileID: 630249112}

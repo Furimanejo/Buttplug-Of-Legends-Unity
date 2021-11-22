@@ -1,0 +1,140 @@
+[
+  {
+    "championName": "Veigar",
+    "isBot": false,
+    "isDead": false,
+    "items": [],
+    "level": 1,
+    "position": "",
+    "rawChampionName": "game_character_displayname_Veigar",
+    "respawnTimer": 0.0,
+    "runes": {
+      "keystone": {
+        "displayName": "Cometa Arcano",
+        "id": 8229,
+        "rawDescription": "perk_tooltip_ArcaneComet",
+        "rawDisplayName": "perk_displayname_ArcaneComet"
+      },
+      "primaryRuneTree": {
+        "displayName": "Feitiçaria",
+        "id": 8200,
+        "rawDescription": "perkstyle_tooltip_7202",
+        "rawDisplayName": "perkstyle_displayname_7202"
+      },
+      "secondaryRuneTree": {
+        "displayName": "Precisão",
+        "id": 8000,
+        "rawDescription": "perkstyle_tooltip_7201",
+        "rawDisplayName": "perkstyle_displayname_7201"
+      }
+    },
+    "scores": {
+      "assists": 0,
+      "creepScore": 0,
+      "deaths": 0,
+      "kills": 0,
+      "wardScore": 0.0
+    },
+    "skinID": 0,
+    "summonerName": "George Maneta",
+    "summonerSpells": {
+      "summonerSpellOne": {
+        "displayName": "Flash",
+        "rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
+        "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+      },
+      "summonerSpellTwo": {
+        "displayName": "Incendiar",
+        "rawDescription": "GeneratedTip_SummonerSpell_SummonerDot_Description",
+        "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerDot_DisplayName"
+      }
+    },
+    "team": "ORDER"
+  },
+  {
+    "championName": "Leona",
+    "isBot": true,
+    "isDead": false,
+    "items": [
+      {
+        "canUse": false,
+        "consumable": false,
+        "count": 1,
+        "displayName": "Escudo Relicário",
+        "itemID": 3858,
+        "price": 400,
+        "rawDescription": "GeneratedTip_Item_3858_Description",
+        "rawDisplayName": "Item_3858_Name",
+        "slot": 0
+      },
+      {
+        "canUse": true,
+        "consumable": true,
+        "count": 2,
+        "displayName": "Poção de Vida",
+        "itemID": 2003,
+        "price": 50,
+        "rawDescription": "GeneratedTip_Item_2003_Description",
+        "rawDisplayName": "Item_2003_Name",
+        "slot": 1
+      },
+      {
+        "canUse": true,
+        "consumable": false,
+        "count": 1,
+        "displayName": "Sentinela Invisível",
+        "itemID": 3340,
+        "price": 0,
+        "rawDescription": "GeneratedTip_Item_3340_Description",
+        "rawDisplayName": "Item_3340_Name",
+        "slot": 6
+      }
+    ],
+    "level": 9,
+    "position": "",
+    "rawChampionName": "game_character_displayname_Leona",
+    "respawnTimer": 0.0,
+    "runes": {
+      "keystone": {
+        "displayName": "Aperto dos Mortos-Vivos",
+        "id": 8437,
+        "rawDescription": "perk_tooltip_GraspOfTheUndying",
+        "rawDisplayName": "perk_displayname_GraspOfTheUndying"
+      },
+      "primaryRuneTree": {
+        "displayName": "Determinação",
+        "id": 8400,
+        "rawDescription": "perkstyle_tooltip_7204",
+        "rawDisplayName": "perkstyle_displayname_7204"
+      },
+      "secondaryRuneTree": {
+        "displayName": "Feitiçaria",
+        "id": 8200,
+        "rawDescription": "perkstyle_tooltip_7202",
+        "rawDisplayName": "perkstyle_displayname_7202"
+      }
+    },
+    "scores": {
+      "assists": 0,
+      "creepScore": 40,
+      "deaths": 0,
+      "kills": 0,
+      "wardScore": 0.0
+    },
+    "skinID": 0,
+    "summonerName": "Leona Bot",
+    "summonerSpells": {
+      "summonerSpellOne": {
+        "displayName": "Curar",
+        "rawDescription": "GeneratedTip_SummonerSpell_SummonerHeal_Description",
+        "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerHeal_DisplayName"
+      },
+      "summonerSpellTwo": {
+        "displayName": "Teleporte",
+        "rawDescription": "GeneratedTip_SummonerSpell_SummonerTeleport_Description",
+        "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerTeleport_DisplayName"
+      }
+    },
+    "team": "CHAOS"
+  }
+]
