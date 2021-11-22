@@ -1,17 +1,21 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using FullSerializer;
+using System;
 
 public class ButtplugOfLegendsUnity : MonoBehaviour
 {
     fsSerializer serializer = new fsSerializer();
     string nameURL = "https://127.0.0.1:2999/liveclientdata/activeplayername";
     string eventURL = "https://127.0.0.1:2999/liveclientdata/eventdata";
+    string playerListURL = "https://127.0.0.1:2999/liveclientdata/playerlist";
     string playerName = string.Empty;
     string eventResponseText = default;
     int countOfEventsInLastEvaluation = 0;
+
+    [SerializeField, TextArea] string testResponse = default;
 
     [SerializeField] List<ButtplugController> controllers;
     [SerializeField] ScoreManager scoreManager;
@@ -39,8 +43,11 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
         while (true)
         {
             yield return GetPlayerName();
-            if(PlayerNameIsValid())
-                yield return GetEvents();            
+            if (PlayerNameIsValid())
+            {
+                yield return GetEvents();
+                yield return GetScores();
+            }
         }
     }
 
@@ -58,6 +65,7 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
         yield return request.SendWebRequest();
         if (request.responseCode == 200)
         {
+            //Debug.Log(request.downloadHandler.text);
             eventResponseText = request.downloadHandler.text;
             var events = new Dictionary<string, List<LeagueEventData>>();
             var data = fsJsonParser.Parse(eventResponseText);
@@ -69,6 +77,26 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
                 EvaluateEvents(eventDataList);
             countOfEventsInLastEvaluation = eventDataList.Count;            
         }
+    }
+
+    IEnumerator GetScores()
+    {
+        var request = CreateGetRequest(playerListURL);
+        yield return request.SendWebRequest();
+        if (request.responseCode == 200)
+        {
+            var playerList = new List<PlayerData>();
+            var data = fsJsonParser.Parse(request.downloadHandler.text);
+            serializer.TryDeserialize(data, ref playerList);
+            foreach (var player in playerList)
+                if (player.summonerName == playerName)
+                    UpdateScores(player.scores);
+        }
+    }
+
+    private void UpdateScores(PlayerData.Scores scores)
+    {
+        Debug.Log($" {scores.creepScore} {scores.wardScore}");
     }
 
     void EvaluateEvents(List<LeagueEventData> events)
