@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,9 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    float score = 0;
+    int creepScore = 0;
+    float wardScore = 0f;
+    float BPScore = 0;
     [SerializeField] Text scoreText;
 
     [Space]
@@ -19,23 +22,25 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] InputField destroyInhibitor;
     [SerializeField] InputField win;
     [SerializeField] InputField lose;
+    [SerializeField] InputField tenCreep;
+    [SerializeField] InputField wardScoreMultiplier;
 
     void Update()
     {
         if (decayPerMinute.text != "-")
-            score -= Time.deltaTime * int.Parse(decayPerMinute.text) / 60f; //decay by time
-        score = Mathf.Clamp(score, 0f, score);
-        scoreText.text = score.ToString("F0");
+            BPScore -= Time.deltaTime * int.Parse(decayPerMinute.text) / 60f; //decay by time
+        BPScore = Mathf.Clamp(BPScore, 0f, BPScore);
+        scoreText.text = BPScore.ToString("F0");
     }
 
     public float GetScore()
     {
-        return score;
+        return BPScore;
     }
 
     public void ResetScore()
     {
-        score = 0;
+        BPScore = 0;
     }
 
     public void ApplyEvent(LeagueEventData eventData, string playerName)
@@ -43,38 +48,59 @@ public class ScoreManager : MonoBehaviour
         switch (eventData.EventName)
         {
             case "GameStart":
-                score += float.Parse(gameStart.text);
+                creepScore = 0;
+                wardScore = 0;
+                //BPScore += ParseField(gameStart);
                 break;
 
             case "MinionsSpawning":
-                score += float.Parse(minionSpawning.text);
+                //BPScore += ParseField(minionSpawning);
                 break;
 
             case "ChampionKill":
                 if (eventData.KillerName == playerName)
-                    score += float.Parse(kill.text);
+                    BPScore += ParseField(kill);
                 if (eventData.Assisters.Contains(playerName))
-                    score += float.Parse(assist.text);
+                    BPScore += ParseField(assist);
                 if (eventData.VictimName == playerName)
-                    score += float.Parse(death.text);
+                    BPScore += ParseField(death);
                 break;
 
             case "TurretKilled":
                 if (eventData.KillerName == playerName || eventData.Assisters.Contains(playerName))
-                    score += float.Parse(destroyTurret.text);
+                    BPScore += ParseField(destroyTurret);
                 break;
 
             case "InhibKilled":
                 if (eventData.KillerName == playerName || eventData.Assisters.Contains(playerName))
-                    score += float.Parse(destroyInhibitor.text);
+                    BPScore += ParseField(destroyInhibitor);
                 break;
 
             case "GameEnd":
                 if (eventData.Result == "Win")
-                    score += float.Parse(win.text);
+                    BPScore += ParseField(win);
                 else
-                    score += float.Parse(lose.text);
+                    BPScore += ParseField(lose);
                 break;
         }
+    }
+
+    public void UpdateCreepsAndWards(PlayerData.Scores scores)
+    {
+        if(scores.creepScore != creepScore)
+        {
+            BPScore += ParseField(tenCreep);
+            creepScore = scores.creepScore;
+        }
+        if(scores.wardScore != wardScore)
+        {
+            BPScore += (scores.wardScore - wardScore) * ParseField(wardScoreMultiplier);
+            wardScore = scores.wardScore;
+        }
+    }
+
+    float ParseField(InputField field)
+    {
+        return float.Parse(field.text);
     }
 }
