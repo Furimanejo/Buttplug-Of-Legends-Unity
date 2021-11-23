@@ -15,8 +15,6 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
     string eventResponseText = default;
     int countOfEventsInLastEvaluation = 0;
 
-    [SerializeField, TextArea] string testResponse = default;
-
     [SerializeField] List<ButtplugController> controllers;
     [SerializeField] ScoreManager scoreManager;
 
@@ -90,13 +88,11 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
             serializer.TryDeserialize(data, ref playerList);
             foreach (var player in playerList)
                 if (player.summonerName == playerName)
-                    UpdateScores(player.scores);
+                {
+                    scoreManager.UpdateCreepsAndWards(player.scores);
+                    break;
+                }                    
         }
-    }
-
-    private void UpdateScores(PlayerData.Scores scores)
-    {
-        Debug.Log($" {scores.creepScore} {scores.wardScore}");
     }
 
     void EvaluateEvents(List<LeagueEventData> events)
