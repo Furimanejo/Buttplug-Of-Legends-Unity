@@ -10,8 +10,6 @@ Then that score is used to control the connected devices (device intensity is ma
   <img src=./Images/screenshot_v1.0.png />
 </p>
 
-![Screenshot of version v1.0]()
-
 This app was made using Unity Engine and [Buttplug](https://buttplug.io/), an open-source standards and software project for controlling intimate hardware, including sex toys, fucking machines, and more.
 
 This app uses the official LoL API to get the data needed, and it doesn't inject code or modify the game behavior, So I think it's pretty safe to use but I can't garantee that riot won't ban over this.
