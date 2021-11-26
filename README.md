@@ -22,6 +22,10 @@ Remember to always play safe, sane and consensual. Please, _**do not drag unsusp
 - Download [a release of Buttplug Of Legends Unity](https://github.com/Furimanejo/Buttplug-Of-Legends-Unity/releases), run it and click connect.
 - Play League of Legends, you can easily test this app by creating a training match with one bot.
 
+## Observations
+
+You can tweak the values of each action individually, and even use negative values. This can be usefull if you want to punish certain actions instead of rewarding them (e.g. setting kills to a negative number if you play the support role).
+
 ## Support
 
 Drop by my [discord server](https://discord.gg/wz2qvkuEyJ) if you need any help or want to make suggestions.
