@@ -1,3 +1,4 @@
+using Buttplug;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,11 +7,11 @@ using UnityEngine.UI;
 public class ButtplugVibrationController : ButtplugController
 {
     [SerializeField] InputField maxDeviceStrength;
-    int pattern = 0;
     [SerializeField] InputField frequencyBPM;
+    int pattern = 0;
     const float BPM_TO_RADS = 0.10471975499997f;
 
-    protected override void UpdateValueToClient()
+    public override void SendValue(ButtplugClientDevice[] devices)
     {
         var sendValue = value * float.Parse(maxDeviceStrength.text) / 100;
         switch (pattern)
@@ -21,8 +22,9 @@ public class ButtplugVibrationController : ButtplugController
             default:
                 break;
         }
-        client.QueueMenssage(sendValue, 0,
-            Buttplug.ServerMessage.Types.MessageAttributeType.VibrateCmd);
+        foreach (var device in devices)
+            if (device.AllowedMessages.ContainsKey(ServerMessage.Types.MessageAttributeType.VibrateCmd))
+                device.SendVibrateCmd(sendValue);
     }
 
     public void OnChangePattern(int newPattern)
