@@ -9,41 +9,13 @@ using System.Threading.Tasks;
 
 public class ButtplugClient : MonoBehaviour
 {
+    ButtplugUnityClient client = null;
     [SerializeField] string clientDisplayName;
     [SerializeField] Text connectionStatusLabel;
-    ButtplugUnityClient client = null;
-    Queue<Message> messageQueue = new Queue<Message>();
     [SerializeField] float minDelayBetweenMessages = .2f;
-    float waitForNextMessageDequeue = 0f;
+    float messageTimer = 0f;
+    [SerializeField] List<ButtplugController> controllers = new List<ButtplugController>();
     
-    class Message
-    {
-        float value;
-        public float delay { get; private set; }
-        ServerMessage.Types.MessageAttributeType messageAttributeType;
-
-        public Message(float _value, float _delay, ServerMessage.Types.MessageAttributeType messageAttributeType)
-        {
-            value = _value;
-            delay = _delay;
-        }
-
-        public void Send(ButtplugUnityClient client)
-        {
-            if (client == null || client.Connected == false)
-                return;
-
-            foreach (var device in client.Devices)
-            {
-                if (device.AllowedMessages.ContainsKey(messageAttributeType))
-                {
-                    if (messageAttributeType == ServerMessage.Types.MessageAttributeType.VibrateCmd)
-                        device.SendVibrateCmd(value);
-                }
-            }
-        }
-    }
-
     private void Start()
     {
         client = new ButtplugUnityClient(clientDisplayName);
@@ -54,19 +26,15 @@ public class ButtplugClient : MonoBehaviour
 
     private void Update()
     {
-        if (waitForNextMessageDequeue < 0)
+        if (client.Connected == false)
+            return;
+        messageTimer += Time.deltaTime;
+        if(messageTimer >= minDelayBetweenMessages)
         {
-            if (messageQueue.Count > 0)
-            {
-                var message = messageQueue.Dequeue();
-                message.Send(client);
-                waitForNextMessageDequeue = message.delay;
-            }
+            messageTimer = 0;
+            foreach (var controller in controllers)
+                controller.SendValue(client.Devices);
         }
-        else
-        {
-            waitForNextMessageDequeue -= Time.deltaTime;
-        }            
     }
 
     private void UpdateUIDisconnected(object sender, EventArgs e)
@@ -87,22 +55,4 @@ public class ButtplugClient : MonoBehaviour
             }
         }
     }
-    
-    public void TestDevices()
-    {
-        QueueMenssage(1f, 1f, ServerMessage.Types.MessageAttributeType.VibrateCmd);
-    }
-
-    public void QueueMenssage(float value, float delay, ServerMessage.Types.MessageAttributeType messageType)
-    {
-        if(delay < minDelayBetweenMessages)
-        {
-            if (messageQueue.Count > 0)
-                return;
-            delay = minDelayBetweenMessages;
-        }
-        var message = new Message(value, delay, messageType);
-        messageQueue.Enqueue(message);
-    }
-
 }

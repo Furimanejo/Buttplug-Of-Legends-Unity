@@ -14,6 +14,7 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
     string playerName = string.Empty;
     string eventResponseText = default;
     int countOfEventsInLastEvaluation = 0;
+    bool testingDevices = false;
 
     [SerializeField] List<ButtplugController> controllers;
     [SerializeField] ScoreManager scoreManager;
@@ -26,8 +27,24 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
     
     void Update()
     {
+        if (testingDevices)
+            return;
         foreach(var controller in controllers)
             controller.SetValue(scoreManager.GetScore()/100f);
+    }
+
+    public void TestDevices()
+    {
+        StartCoroutine(TestDevicesCoroutine());
+    }
+
+    IEnumerator TestDevicesCoroutine()
+    {
+        testingDevices = true;
+        foreach (var controller in controllers)
+            controller.SetValue(1f);
+        yield return new WaitForSeconds(2f);
+        testingDevices = false;
     }
 
     private void LogClientData()
