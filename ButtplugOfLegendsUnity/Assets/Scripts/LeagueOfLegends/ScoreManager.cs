@@ -13,8 +13,8 @@ public class ScoreManager : MonoBehaviour
 
     [Space]
     [SerializeField] InputField decayPerMinute;
-    [SerializeField] InputField gameStart;
-    [SerializeField] InputField minionSpawning;
+    //[SerializeField] InputField gameStart;
+    //[SerializeField] InputField minionSpawning;
     [SerializeField] InputField kill;
     [SerializeField] InputField assist;
     [SerializeField] InputField death;
@@ -24,6 +24,47 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] InputField lose;
     [SerializeField] InputField tenCreep;
     [SerializeField] InputField wardScoreMultiplier;
+
+    List<InputField> inputFields = new List<InputField>();
+
+    private void OnEnable()
+    {
+        inputFields = new List<InputField>()
+        {
+            decayPerMinute, 
+            kill, 
+            assist, 
+            death, 
+            destroyTurret, 
+            destroyInhibitor, 
+            win, 
+            lose, 
+            tenCreep, 
+            wardScoreMultiplier
+        };
+        LoadValuesFromPlayerPrefs(inputFields);
+    }
+    private void OnDisable()
+    {
+        SaveValuesToPlayerPrefs(inputFields);
+    }
+
+    void LoadValuesFromPlayerPrefs(List<InputField> inputFields)
+    {
+        foreach (var field in inputFields)
+        {
+            var value = PlayerPrefs.GetInt(GetFieldName(field), int.MinValue);
+            if (value != int.MinValue)
+                field.text = value.ToString();
+        }
+    }
+    void SaveValuesToPlayerPrefs(List<InputField> inputFields)
+    {
+        foreach (var field in inputFields)
+        {
+            PlayerPrefs.SetInt(GetFieldName(field), int.Parse(field.text));
+        }
+    }
 
     void Update()
     {
@@ -102,5 +143,10 @@ public class ScoreManager : MonoBehaviour
     float ParseField(InputField field)
     {
         return float.Parse(field.text);
+    }
+
+    string GetFieldName(InputField field)
+    {
+        return field.gameObject.transform.parent.name;
     }
 }
