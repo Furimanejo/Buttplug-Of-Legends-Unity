@@ -1321,7 +1321,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420033}
   - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Camera and Overlay
@@ -1413,21 +1412,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64062544c416e8d4484ee2b2470e0698, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overlayController: {fileID: 519420030}
-  eventSystem: {fileID: 948786077}
-  graphicRaycaster: {fileID: 1789460301}
 --- !u!1001 &604553441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3739,6 +3723,7 @@ GameObject:
   - component: {fileID: 1414906122}
   - component: {fileID: 1414906124}
   - component: {fileID: 1414906123}
+  - component: {fileID: 1414906125}
   m_Layer: 5
   m_Name: Main UI
   m_TagString: Untagged
@@ -3807,6 +3792,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414906121}
   m_CullTransparentMesh: 1
+--- !u!114 &1414906125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414906121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64062544c416e8d4484ee2b2470e0698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overlayController: {fileID: 519420030}
 --- !u!114 &1545196063 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8325702997181569116, guid: a7c3adab3f93cb04bbd6136229365a0d, type: 3}
