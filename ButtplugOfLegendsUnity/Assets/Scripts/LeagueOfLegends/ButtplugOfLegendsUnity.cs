@@ -21,6 +21,7 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = 30;
         StartCoroutine(UpdateClientData());
         Application.wantsToQuit += () => { LogClientData(); return true; } ;
     }
