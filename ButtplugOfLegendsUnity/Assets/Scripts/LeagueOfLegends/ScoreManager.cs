@@ -43,12 +43,9 @@ public class ScoreManager : MonoBehaviour
             wardScoreMultiplier
         };
         LoadValuesFromPlayerPrefs(inputFields);
+        Application.wantsToQuit += () => { SaveValuesToPlayerPrefs(inputFields); return true; };
     }
-    private void OnDisable()
-    {
-        SaveValuesToPlayerPrefs(inputFields);
-    }
-
+    
     void LoadValuesFromPlayerPrefs(List<InputField> inputFields)
     {
         foreach (var field in inputFields)
