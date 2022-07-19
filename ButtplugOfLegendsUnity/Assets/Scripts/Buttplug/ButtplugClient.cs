@@ -12,21 +12,15 @@ public class ButtplugClient : MonoBehaviour
     ButtplugUnityClient client = null;
     [SerializeField] string clientDisplayName;
     [SerializeField] Text connectionStatusLabel;
+    [SerializeField] Text connectButtonText;
+    [SerializeField] InputField addressInputField = null;
     [SerializeField] float minDelayBetweenMessages = .2f;
     float messageTimer = 0f;
     [SerializeField] List<ButtplugController> controllers = new List<ButtplugController>();
     
-    private void Start()
-    {
-        client = new ButtplugUnityClient(clientDisplayName);
-        UpdateUIDisconnected(null, null);
-        client.ServerDisconnect += UpdateUIDisconnected;
-        ButtplugAntiCrash.clientList.Add(client);
-    }
-
     private void Update()
     {
-        if (client.Connected == false)
+        if (client == null || client.Connected == false)
             return;
         messageTimer += Time.deltaTime;
         if(messageTimer >= minDelayBetweenMessages)
@@ -37,22 +31,75 @@ public class ButtplugClient : MonoBehaviour
         }
     }
 
-    private void UpdateUIDisconnected(object sender, EventArgs e)
+    void CreateClient()
     {
-        connectionStatusLabel.text = "Status: <color=red>Disconnected</color>";
+        if (client != null)
+            client.Dispose();
+        client = new ButtplugUnityClient(clientDisplayName);
+        client.ServerDisconnect += UpdateUI;
+        ButtplugAntiCrash.clientList.Add(client);
+    }
+
+    private void UpdateUI(object sender, EventArgs e)
+    {
+        Debug.Log($"Update {client.Connected}");
+        if (client.Connected)
+        {
+            connectionStatusLabel.text = "<color=green>Connected</color>";
+            connectButtonText.text = "Disconnect";
+        }
+        else
+        {
+            connectionStatusLabel.text = "<color=red>Disconnected</color>";
+            connectButtonText.text = "Connect";
+        }
+        Canvas.ForceUpdateCanvases();
     }
     
-    public async void TryConnect()
+    public async void ToggleConnect()
     {
-        if(client.Connected == false)
+        if(client == null || client.Connected == false)
         {
-            var connector = new ButtplugWebsocketConnectorOptions(new Uri("ws://localhost:12345/buttplug"));
-            await client.ConnectAsync(connector);
-            if (client.Connected)
+            try
             {
-                connectionStatusLabel.text = "Status: <color=green>Connected</color>";
-                await client.StartScanningAsync();
+                CreateClient();
+                var address = new Uri(addressInputField.text);
+                var connector = new ButtplugWebsocketConnectorOptions(address);
+                connectionStatusLabel.text = "<color=yellow>Connecting...</color>";
+                await client.ConnectAsync(connector);
+                if (client.Connected)
+                {
+                    UpdateUI(null, null);
+                    await client.StartScanningAsync();
+                }
+                else
+                    connectionStatusLabel.text = $"<color=red>Connection Failed</color>";
             }
+            catch(Exception ex)
+            {
+                while (ex.InnerException != null)
+                    ex = ex.InnerException;
+                connectionStatusLabel.text = $"<color=red>{ex.Message}</color>";
+            }
+
+            //catch (ButtplugConnectorException ex) when (ex.Message.Contains("HTTP format error: invalid format"))
+            //{
+            //    connectionStatusLabel.text = $"<color=red>Invalid Address</color>";
+            //}
+            //catch (ButtplugConnectorException ex) when (ex.Message.Contains("URL scheme not supported"))
+            //{
+            //    connectionStatusLabel.text = $"<color=red>Invalid Address</color>";
+            //}
+            //catch (UriFormatException)
+            //{
+            //    connectionStatusLabel.text = $"<color=red>Invalid Address</color>";
+            //}
+        }
+        else
+        {
+            if (client.Connected)
+                await client.DisconnectAsync();
+            client.Dispose();
         }
     }
 }

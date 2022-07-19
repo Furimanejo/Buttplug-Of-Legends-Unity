@@ -35,8 +35,6 @@ public class ButtplugLinearOscilationController : ButtplugController
         }
         catch { }
 
-        Debug.Log($"{desiredLinearPosition} - {duration}");
-
         foreach (var device in devices)
             if (device.AllowedMessages.ContainsKey(ServerMessage.Types.MessageAttributeType.LinearCmd))
                 device.SendLinearCmd(duration, desiredLinearPosition);
