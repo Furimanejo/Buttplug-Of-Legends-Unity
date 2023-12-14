@@ -72,7 +72,12 @@ public class ButtplugOfLegendsUnity : MonoBehaviour
         var request = CreateGetRequest(nameURL);
         yield return request.SendWebRequest();
         if (request.responseCode == 200)
+        {
             playerName = request.downloadHandler.text.Replace("\"", "");
+            var i = playerName.LastIndexOf('#');
+            if (i > -1)
+                playerName = playerName.Substring(0, i);
+        }
     }
 
     IEnumerator GetEvents()
