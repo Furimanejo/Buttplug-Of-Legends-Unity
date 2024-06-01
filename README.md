@@ -1,3 +1,5 @@
+DEPRECATED PROJECT: see [Playful Plugins](http://furimanejo.itch.io/playful-plugins) for an up-to-date version of this mod.
+
 # Buttplug-Of-Legends-Unity
 
 ## About
