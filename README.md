@@ -1,8 +1,5 @@
 DEPRECATED PROJECT: see [Playful Plugins](http://furimanejo.itch.io/playful-plugins) for an up-to-date version of this mod.
 
-# Buttplug-Of-Legends-Unity
-
-## About
 This is an windows app based on https://github.com/kinkyacedev/buttplug-of-legends. 
 
 It monitors your League of Legends gameplay and creates a score based on the actions you perform, like killing enemies/destroying turrets. 
